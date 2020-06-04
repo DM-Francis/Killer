@@ -14,12 +14,9 @@ namespace Killer.Dashboard.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public string ConnectionString { get; set; }
-
-        public IndexModel(ILogger<IndexModel> logger, IConfiguration configuration)
+        public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
-            ConnectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
         public void OnGet()
