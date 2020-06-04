@@ -32,6 +32,13 @@ namespace Killer.Dashboard
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireNonAlphanumeric = false;
+                options.SignIn.RequireConfirmedAccount = false;
+            });
+
             services.AddRazorPages();
 
             services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
